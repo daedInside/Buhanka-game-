@@ -23,6 +23,8 @@ public class Hero : MonoBehaviour
     public Transform groundCheck;//позиция ног персонажа
     public LayerMask groundMask;
 
+    public static Hero Instance { get; set; }
+
     private States State
     {
         get { return (States)anim.GetInteger("state"); }
@@ -34,6 +36,7 @@ public class Hero : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        Instance = this;
 
     }
 
@@ -83,6 +86,12 @@ public class Hero : MonoBehaviour
     {
         physic.AddForce(new Vector2(0, 600));
         if (!isGrounded) State = States.jump;
+    }
+
+    public void GetDamage()
+    {
+        lives -= 1;
+        Debug.Log(lives);
     }
 }
 
