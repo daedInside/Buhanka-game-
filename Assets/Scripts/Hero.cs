@@ -100,4 +100,5 @@ public enum States
     idle,
     run,
     jump
+   
 }
