@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Tire : Entity
 {
-    [SerializeField] private int lives = 2;
-    
+    private void Start()
+    {
+        lives = 2;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     { 
         if(collision.gameObject==Hero.Instance.gameObject)

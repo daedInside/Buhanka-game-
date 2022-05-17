@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,8 +21,14 @@ public class Hero : MonoBehaviour
     private static int maxJumps = 2;
     public int currentJump = 0;
 
+    public bool isAttacking = false;
+    public bool isRecarged = true;
+
     public Transform groundCheck;//позиция ног персонажа
     public LayerMask groundMask;
+    public Transform attackPos;
+    public float attackRange;
+    public LayerMask enemy;
 
     public static Hero Instance { get; set; }
 
@@ -33,11 +40,11 @@ public class Hero : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        Instance = this;
-
+        isRecarged = true;
     }
 
     private void FixedUpdate()
@@ -48,10 +55,13 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        if (isGrounded) State = States.idle;
+        if (isGrounded && !isAttacking) State = States.idle;
 
         if (Input.GetButton("Horizontal"))
             Run();
+
+        if (Input.GetButtonDown("Fire1"))
+            Attack();
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
 
@@ -88,6 +98,49 @@ public class Hero : MonoBehaviour
         if (!isGrounded) State = States.jump;
     }
 
+    private void Attack()
+    {
+        if(isGrounded && isRecarged)
+        {
+            State = States.attack;
+            isAttacking = true;
+            isRecarged = false;
+
+            StartCoroutine(AttackAnimation());
+            StartCoroutine(AttackCoolDown());
+        }
+    }
+
+    
+    private IEnumerator AttackAnimation()
+    {
+        yield return new WaitForSeconds(0.4f);
+        isAttacking = false;
+    }
+
+    private IEnumerator AttackCoolDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isRecarged = true;
+    }
+
+    private void OnAttack()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
+
+        for(int i=0;i<colliders.Length;i++)
+        {
+            colliders[i].GetComponent<Entity>().GetDamage();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+
     public void GetDamage()
     {
         lives -= 1;
@@ -99,6 +152,7 @@ public enum States
 {
     idle,
     run,
-    jump
+    jump,
+    attack
    
 }
