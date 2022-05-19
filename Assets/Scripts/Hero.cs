@@ -8,7 +8,9 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; // скорость движения
     [SerializeField] private int lives = 5; // скорость движения
-
+    [SerializeField] private AudioSource Jumpsound;
+    [SerializeField] private AudioSource damagesound;
+    [SerializeField] private AudioSource Attacksound;
     public Rigidbody2D physic;
 
     private Rigidbody2D rb;
@@ -68,6 +70,7 @@ public class Hero : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+
             isSecondJump = true;
         }
         else if (isSecondJump)
@@ -96,6 +99,7 @@ public class Hero : MonoBehaviour
     {
         physic.AddForce(new Vector2(0, 600));
         if (!isGrounded) State = States.jump;
+        Jumpsound.Play();
     }
 
     private void Attack()
@@ -107,6 +111,7 @@ public class Hero : MonoBehaviour
             isRecarged = false;
 
             StartCoroutine(AttackAnimation());
+            Attacksound.Play();
             StartCoroutine(AttackCoolDown());
         }
     }
@@ -144,6 +149,7 @@ public class Hero : MonoBehaviour
     public void GetDamage()
     {
         lives -= 1;
+        damagesound.Play();
         Debug.Log(lives);
     }
 }
