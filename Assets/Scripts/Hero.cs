@@ -152,6 +152,17 @@ public class Hero : MonoBehaviour
         damagesound.Play();
         Debug.Log(lives);
     }
+
+    public void GetDamageFire()
+    {
+        lives -= 5;
+        damagesound.Play();
+    }
+    public virtual void DieHero()
+    {
+        if(lives<=0)
+        Destroy(this.gameObject);
+    }
 }
 
 public enum States
