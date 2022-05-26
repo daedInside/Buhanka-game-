@@ -6,33 +6,48 @@ using UnityEngine;
 public class Buhankonator : Entity
 {
     
-    private float speed = 5.5f;
-    private Vector3 dir;
-    private SpriteRenderer sprite;
-    private void Awake()
-    {
-        sprite = GetComponentInChildren<SpriteRenderer>();
-    }
+    private Rigidbody2D physic;
+    public Transform Hero;
+    public float speed;
+    public float agroDistance;
 
     private void Start()
     {
-        dir = transform.right;
+        physic = GetComponent<Rigidbody2D>();
 
     }
    
     private void Update()
     {
-        Ride();
-    }
-    private void Ride()
-    {
+        float distToHero = Vector2.Distance(transform.position, Hero.position);
+        if(distToHero < agroDistance)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 1f + transform.right * dir.x * 0.7f, 0.1f);
-
-            if (colliders.Length > 0) dir *= -1f;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, Time.deltaTime);
+            StartHunting();
         }
-        sprite.flipX = dir.x < 0.0f;
+        else
+        {
+            StopHunting();
+        }
+        Debug.Log("Distance: " + distToHero);
+    }
+    void StartHunting()
+    {
+
+
+        if (Hero.position.x < transform.position.x)
+        {
+            physic.velocity = new Vector2(-speed, 0);
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (Hero.position.x > transform.position.x)
+        {
+            physic.velocity = new Vector2(speed, 0);
+            transform.localScale = new Vector2(-1, 1);
+        }
+                }
+    void StopHunting()
+    {
+        physic.velocity = new Vector2(0, 0);
     }
 }
 
