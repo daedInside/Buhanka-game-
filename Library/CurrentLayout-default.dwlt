@@ -92,8 +92,8 @@ MonoBehaviour:
     y: 0
     width: 418
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 30
+  controlID: 117
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 31
+  controlID: 118
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -489,21 +489,21 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Animation/Buhanka
+    - Assets/Materials/Wtf
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Animation/Buhanka
+  - Assets/Materials/Wtf
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Buhanka-game-
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 9c450000
-    m_LastClickedID: 17820
+    m_SelectedIDs: ca450000
+    m_LastClickedID: 17866
     m_ExpandedIDs: 00000000904500009245000094450000964500009845000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000b6430000cc43000006580000dc5800003e4300005e610000ae5b00004c570000fc4c0000bc450000
+    m_ExpandedInstanceIDs: c6230000b6430000cc43000006580000dc5800003e4300005e610000ae5b00004c570000fc4c0000bc450000e2450000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -653,9 +653,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 66fbffff8c430000aa430000
+      m_SelectedIDs: 7cf6ffff
+      m_LastClickedID: -2436
+      m_ExpandedIDs: a8f6ffff66fbffffaa430000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -715,9 +715,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 86.18839, y: -1.6240677, z: -485.07895}
+    m_Target: {x: 45.60652, y: -2.3952427, z: -505.4274}
     speed: 2
-    m_Value: {x: 86.18839, y: -1.6240677, z: -485.07895}
+    m_Value: {x: 45.60652, y: -2.3952427, z: -505.4274}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -768,9 +768,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 8.884243
+    m_Target: 6.016505
     speed: 2
-    m_Value: 8.884243
+    m_Value: 6.016505
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -906,7 +906,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 676
-    width: 1402
+    width: 1501
     height: 323
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &22
