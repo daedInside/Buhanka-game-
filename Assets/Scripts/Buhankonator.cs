@@ -33,7 +33,7 @@ public class Buhankonator : Entity
             StopHunting();
         }
         anim = GetComponent<Animator>();
-        Debug.Log("Distance: " + distToHero);
+       
     }
     
     void StartHunting()
@@ -52,7 +52,7 @@ public class Buhankonator : Entity
             sprite.flipX = transform.position.x > 0.0f;
         }
 
-        animator.SetBool("move", Mathf.Abs(speed) > 0.1f);
+       
     }
     void StopHunting()
     {

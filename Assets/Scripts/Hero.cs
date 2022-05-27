@@ -20,7 +20,6 @@ public class Hero : MonoBehaviour
     private bool isGrounded;
     private bool isSecondJump = false;
     private float groundRadius = 0.3f;
-    private static int maxJumps = 2;
     public int currentJump = 0;
 
     public bool isAttacking = false;
@@ -48,12 +47,6 @@ public class Hero : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         isRecarged = true;
     }
-
-    private void FixedUpdate()
-    {
-
-    }
-
 
     private void Update()
     {
