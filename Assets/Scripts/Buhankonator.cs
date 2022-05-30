@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Buhankonator : Entity
 {
+    [SerializeField] private AudioSource Indiansound;
     private SpriteRenderer sprite;
     private Animator anim;
     private Rigidbody2D physic;
@@ -27,6 +28,7 @@ public class Buhankonator : Entity
         if(distToHero < agroDistance)
         {
             StartHunting();
+            
         }
         else
         {
@@ -39,7 +41,7 @@ public class Buhankonator : Entity
     void StartHunting()
     {
 
-
+      
         if (Hero.position.x < transform.position.x)
         {
             physic.velocity = new Vector2(-speed, 0);
@@ -56,7 +58,7 @@ public class Buhankonator : Entity
     }
     void StopHunting()
     {
-        physic.velocity = new Vector2(0, 0);
+        physic.velocity = new Vector2(0, 0); Indiansound.Play();
     }
 }
 

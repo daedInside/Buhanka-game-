@@ -33,7 +33,7 @@ public class WTF : Entity
             StopHunting();
         }
         anim = GetComponent<Animator>();
-        Debug.Log("Distance: " + distToHero);
+       
     }
 
     void StartHunting()
