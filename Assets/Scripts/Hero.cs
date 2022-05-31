@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Hero : MonoBehaviour
@@ -21,6 +22,7 @@ public class Hero : MonoBehaviour
     private bool isSecondJump = false;
     private float groundRadius = 0.3f;
     public int currentJump = 0;
+
 
     public bool isAttacking = false;
     public bool isRecarged = true;
@@ -154,7 +156,8 @@ public class Hero : MonoBehaviour
     public virtual void DieHero()
     {
         if(lives<=0)
-        Destroy(this.gameObject);
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

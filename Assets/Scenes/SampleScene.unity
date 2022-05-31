@@ -6289,8 +6289,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257892656}
-  - component: {fileID: 1257892655}
   - component: {fileID: 1257892654}
+  - component: {fileID: 1257892655}
   - component: {fileID: 1257892653}
   m_Layer: 7
   m_Name: Fire (1)
