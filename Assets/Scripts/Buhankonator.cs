@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Buhankonator : Entity
 {
-    [SerializeField] private AudioSource Indiansound;
+    
     private SpriteRenderer sprite;
     private Animator anim;
     private Rigidbody2D physic;
@@ -17,6 +17,7 @@ public class Buhankonator : Entity
 
     private void Start()
     {
+        lives = 3;
         animator = GetComponent<Animator>();
         physic = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -58,7 +59,9 @@ public class Buhankonator : Entity
     }
     void StopHunting()
     {
-        physic.velocity = new Vector2(0, 0); Indiansound.Play();
+        physic.velocity = new Vector2(0, 0);
     }
+
+   
 }
 

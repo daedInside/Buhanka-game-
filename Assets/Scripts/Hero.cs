@@ -41,7 +41,9 @@ public class Hero : MonoBehaviour
         set { anim.SetInteger("state", (int)value); }
     }
 
-    private void Awake()
+    
+
+    public void Awake()
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
@@ -141,23 +143,16 @@ public class Hero : MonoBehaviour
     }
 
 
-    public void GetDamage()
+    public  void GetDamage()
     {
-        lives -= 1;
+        lives -= 2;
         damagesound.Play();
         Debug.Log(lives);
     }
 
-    public void GetDamageFire()
+    public void Restart()
     {
-        lives -= 5;
-        damagesound.Play();
-    }
-    public virtual void DieHero()
-    {
-        if(lives<=0)
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

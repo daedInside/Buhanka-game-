@@ -6,20 +6,16 @@ public class Tire : Entity
 {
     private void Start()
     {
-        lives = 2;
+        lives = 1;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    { 
-        if(collision.gameObject==Hero.Instance.gameObject)
+    {
+        if (collision.gameObject == Hero.Instance.gameObject)
         {
-            Hero.Instance.GetDamage();
-            lives--;
-            Debug.Log("on tire" + lives);
+            Hero.Instance.Restart();
         }
-        if (lives < 1)
-            Die();
-            
+
     }
 }
 
