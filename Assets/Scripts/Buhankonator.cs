@@ -62,6 +62,6 @@ public class Buhankonator : Entity
         physic.velocity = new Vector2(0, 0);
     }
 
-   
+  
 }
 
