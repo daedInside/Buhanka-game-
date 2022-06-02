@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
-
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Buhankonator : Entity
 {
@@ -13,7 +14,9 @@ public class Buhankonator : Entity
     public float speed;
     public float agroDistance;
     Animator animator;
-    
+
+   
+   
 
     private void Start()
     {
@@ -62,6 +65,6 @@ public class Buhankonator : Entity
         physic.velocity = new Vector2(0, 0);
     }
 
-  
 }
+
 
