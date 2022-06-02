@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; // скорость движения
-    [SerializeField] private int lives = 5; // скорость движения
+    [SerializeField] private int lives = 5; 
     [SerializeField] private AudioSource Jumpsound;
     [SerializeField] private AudioSource damagesound;
     [SerializeField] private AudioSource Attacksound;
@@ -45,7 +45,9 @@ public class Hero : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
+       
+            Instance = this;
+        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -145,9 +147,13 @@ public class Hero : MonoBehaviour
 
     public  void GetDamage()
     {
-        lives -= 2;
+        lives --;
         damagesound.Play();
         Debug.Log(lives);
+        if (lives <= 0)
+        {
+            Restart();
+        }
     }
 
     public void Restart()

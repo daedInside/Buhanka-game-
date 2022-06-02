@@ -7,7 +7,7 @@ public class Entity : MonoBehaviour
     protected int lives;
     public virtual void GetDamage()
     {
-        lives--;
+        lives-=1;
         if (lives < 1)
             Die();
     }
