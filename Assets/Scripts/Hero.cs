@@ -3,16 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; // скорость движения
-    [SerializeField] private int lives = 5; 
+    [SerializeField] private int lives = 5;
+    [SerializeField] private int health; 
     [SerializeField] private AudioSource Jumpsound;
     [SerializeField] private AudioSource damagesound;
     [SerializeField] private AudioSource Attacksound;
     public Rigidbody2D physic;
+
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite aliveHeart;
+    [SerializeField] private Sprite deadHeart;
 
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -45,9 +51,9 @@ public class Hero : MonoBehaviour
 
     public void Awake()
     {
-       
-            Instance = this;
-        
+        lives = 5;
+        health = lives;    
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -79,6 +85,22 @@ public class Hero : MonoBehaviour
                 Jump();
                 isSecondJump = false;
             }
+        }
+
+        if (health > lives)
+            health = lives;
+
+        for(int i=0; i < hearts.Length; i++)
+        {
+            if (i < health)
+                hearts[i].sprite = aliveHeart;
+            else
+                hearts[i].sprite = deadHeart;
+
+            if (i < lives)
+                hearts[i].enabled = true;
+            else
+                hearts[i].enabled = false;
         }
 
     }

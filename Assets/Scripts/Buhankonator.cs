@@ -13,6 +13,9 @@ public class Buhankonator : Entity
     public Transform Hero;
     public float speed;
     public float agroDistance;
+
+    public GameObject panel;
+
     Animator animator;
 
    
@@ -64,7 +67,18 @@ public class Buhankonator : Entity
     {
         physic.velocity = new Vector2(0, 0);
     }
-   
+
+    public override void Die()
+    {
+        gameObject.SetActive(false);
+        Invoke("GameOver", 5);
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0f;
+        panel.SetActive(true);
+    }
 
 }
 
